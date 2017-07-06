@@ -51,7 +51,8 @@ function showResult(data) {
     $("#resultStats").text("About " + numberWithCommas(data.hits.total) + " results ( " + data.took / 1000 + " seconds) ");
 
 
-    data.hits.hits.map(function (item) {
+    data.hits.hits
+        .map(function (item) {
         return item._source.id + " " + item._source.nom + " " + item._source.prenom + " " + item._source.dateNaissance;
     })
         .forEach(function (item) {
