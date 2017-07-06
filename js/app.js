@@ -57,6 +57,7 @@
         }
 
         function search(e) {
+            console.log("Clicked");
             e.preventDefault();
             $.ajax({
                 method: "POST",
@@ -80,7 +81,7 @@
 
         $(function () {
             $query = $("#query");
-            $("#search").click(search);
+            $("#btnSimpleSearch").click(search);
             $("#query").on('input', search);
 
             $("#query").on('input', function () {
