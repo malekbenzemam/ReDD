@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <form>
+            <div class="form-inline">
+                <div class="form-group">
+                    <label for="query">Name</label>
+                    <input type="text" autocomplete="off" class="form-control" id="query" placeholder="Nom" value="malek">
+                </div>
+                <button type="submit" id="search" class="btn btn-default">Chercher</button>
+            </div>
+
+        </form>
+    </div>
+    <br>
+    <hr>
+    <ul id="result">
+
+    </ul>
+
+    <script src="js/jquery.min.js"></script>
+    <script>
+        var $query = null;
+        var data = {
+            "query": {
+                "bool": {
+                    "must": {
+                        "bool": {
+                            "should": [
+                                { "match": { "nom": "mohamed" } },
+                                { "match": { "prenom": "ahmed" } }]
+                        }
+                    }
+                }
+            }
+        }
+
+
+        function query(term) {
+            var data = {
+                "query": {
+                    "term": { "nom": term }
+                }
+            };
+
+            data = {
+                "query": {
+                    "multi_match": {
+                        "query": term,
+                        "fields": ["nom", "prenom"]
+                    }
+                }
+            };
+            data = {
+                "query": {
+                    "query_string": {
+                        
+                        "query": term
+                    }
+                }
+            };
+            console.log(data);
+            return JSON.stringify(data);
+
+        }
+
+        function showResult(data) {
+            console.log(data.hits)
+            $("#result").empty();
+
+            data.hits.hits.map(function (item) {
+                return item._source.id + " " + item._source.nom + " " + item._source.prenom + " " + item._source.dateNaissance;
+            })
+                .forEach(function (item) {
+                    $("#result")
+                        .append("<li>" + item + "</li>");
+
+                });
+        }
+
+        function search(e) {
+            e.preventDefault();
+            $.ajax({
+                method: "POST",
+                // async:false,
+                // crossDomain: true, 
+                // dataType : 'json',
+                data: query($query.val()),
+                contentType: 'application/json',
+                // beforeSend: function (xhr) {
+                //     xhr.setRequestHeader('Authorization', 'Basic ' + btoa('elastic:changeme'));
+                // },
+                url: "/api/_search",
+                success: showResult,
+                error: function (err) { console.log(err); }
+
+
+            });
+
+
+        }
+
+        $(function () {
+            $query = $("#query");
+            $("#search").click(search);
+            $("#query").on('input', search);
+
+            $("#query").on('input', function () {
+                console.log('change');
+
+            });
+
+
+
+        })
+    </script>
+</body>
+
+</html>
