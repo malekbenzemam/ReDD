@@ -65,7 +65,7 @@
                     <p>
                         <cite class="publishedAgency">{{demandeur._source.Gender}}</cite> -
                         <span class="publishedDate">
-                        Né(e) le : <strong>{{demandeur._source.DateNaissance | date:'MM/dd/yyyy'}}</strong> a : {{demandeur._source.CommNaiss}} , N° Act : <strong>{{demandeur._source.NumeroActeNaissance}}</strong>
+                        Né(e) le : <strong>{{demandeur._source.DateNaissance | date:'dd/MM/yyyy'}}</strong> a : {{demandeur._source.CommNaiss}} , N° Act : <strong>{{demandeur._source.NumeroActeNaissance}}</strong>
                     </span>
                     </p>
                     <p class="summary">Résidant a : <strong>{{demandeur._source.ComResidance}} </strong><span class="highlight">Inscrit a l'agence: </span>                        <span> <strong>{{demandeur._source.AgenceDemandeur}}</strong></span></p>
