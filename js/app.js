@@ -47,7 +47,7 @@ function numberWithCommas(x) {
 function showResult(data) {
     console.log(data.hits)
     $("#result").empty();
-    // $('input.number').number( true, 2 );
+    
     $("#resultStats").text("About " + numberWithCommas(data.hits.total) + " results ( " + data.took / 1000 + " seconds) ");
 
 
