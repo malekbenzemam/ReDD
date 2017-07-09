@@ -5,82 +5,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>ReDD</title>
     <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        .result-area {
+            min-height: 600px;
+            padding: 0px 10px;
+        }
 
+        .app-usagovsearch .result-area .press li.press-release {
+            border-color: rgba(255, 165, 0, 0.43);
+        }
+
+        .app-usagovsearch .result-area .press li.event {
+            border-color: rgba(0, 128, 118, 0.43);
+        }
+
+        .tab-content>.active {
+            display: block;
+            visibility: visible;
+        }
+
+        .app-usagovsearch .result-area .press li {
+            position: relative;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-left: 30px solid #efefef;
+            background: #efefef;
+        }
+    </style>
 </head>
 
-<body>
+<body ng-app="app">
 
-    <div class="container">
-        <form class="form-horizontal" role="form">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="input-group" id="adv-search">
-                        <input type="text" class="form-control" id="query" autofocus autocomplete="off" value="malek" placeholder="Chercher un demandeur"
-                        />
-                        <div class="input-group-btn">
-                            <div class="btn-group" role="group">
-                                <div class="dropdown dropdown-lg">
-                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
-                                    <div class="dropdown-menu dropdown-menu-right" role="menu">
-                                        <div class="form-horizontal" role="form">
-                                            <!--<div class="form-group">
-                                            <label for="filter">Filtrer par</label>
-                                    <select class="form-control">
-                                        <option value="0" selected>All Snippets</option>
-                                        <option value="1">Featured</option>
-                                        <option value="2">Most popular</option>
-                                        <option value="3">Top rated</option>
-                                        <option value="4">Most commented</option>
-                                    </select>
-                                        </div>-->
-                                            <div class="form-group">
-                                                <label for="contain">Nom</label>
-                                                <input class="form-control" type="text" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="contain">Prénom</label>
-                                                <input class="form-control" type="text" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="contain">Date de naissance </label>
-                                                <input class="form-control" type="text" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="contain">Lieu de naissance </label>
-                                                <input class="form-control" type="text" />
-                                            </div>
-                                            <button type="button" id="btnAdvSearch" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button type="submit" id="btnSimpleSearch" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            </div>
-        </form>
-    <br>
-    <div id="resultStats">
-    </div>
-    <hr>
-    <ul id="result">
-
-    </ul>
+        <div class="col-md-9 col-sm-12 ">
+            <div ui-view></div>
+        </div>
 
     </div>
 
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.js"></script>
-    <script src="js/app.js">
 
-    </script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-ui-router.min.js"></script>
+    <!--<script src="js/ngStorage.min.js"></script>-->
+    <script src="dist/js/app.min.js"></script>
+
+    <script src="js/app.js"></script>
+
+
 </body>
 
 </html>

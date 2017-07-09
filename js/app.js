@@ -53,7 +53,7 @@ function showResult(data) {
 
     data.hits.hits
         .map(function (item) {
-        return item._source.id + " " + item._source.nom + " " + item._source.prenom + " " + item._source.dateNaissance;
+        return item._source.id + " " + item._source.Nom + " " + item._source.Prenom + " " + item._source.DateNaissance;
     })
         .forEach(function (item) {
             $("#result")

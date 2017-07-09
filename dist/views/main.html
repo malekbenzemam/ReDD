@@ -1,0 +1,79 @@
+<div class="container">
+    <form class="form-horizontal" role="form" ng-submit="vm.simpleSearch()">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="input-group" id="adv-search">
+                    <input type="text" class="form-control" id="query" autofocus autocomplete="off" ng-model="vm.query" placeholder="Chercher un demandeur"
+                    />
+                    <div class="input-group-btn">
+                        <div class="btn-group" role="group">
+                            <div class="dropdown dropdown-lg">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+                                <div class="dropdown-menu dropdown-menu-right" role="menu">
+                                    <div class="form-horizontal" role="form">
+                                        <div class="form-group">
+                                            <label for="contain">Nom</label>
+                                            <input class="form-control" type="text" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="contain">Prénom</label>
+                                            <input class="form-control" type="text" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="contain">Date de naissance </label>
+                                            <input class="form-control" type="text" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="contain">Lieu de naissance </label>
+                                            <input class="form-control" type="text" />
+                                        </div>
+                                        <button type="button" id="btnAdvSearch" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" id="btnSimpleSearch" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<br>
+<div id="resultStats">
+    {{vm.resultStats}}
+</div>
+<hr>
+<ul id="result">
+
+</ul>
+</div>
+
+
+
+<div class="app-usagovsearch result-container">
+    <div class="tab-pane result-area active" id="profile">
+        <ul class="list-unstyled press">
+            <div ng-repeat="demandeur in vm.demandeurs.list">
+                <li class="col-md-12" ng-class=" {'press-release': demandeur._source.DateDebutContrat, 'event': !demandeur._source.DateDebutContrat  }" >
+                    <i class="fa fa-calendar fa-lg"></i>
+                    <a target="_blank" href="#">
+                    <strong>{{demandeur._source.Nom}} </strong>  {{demandeur._source.Prenom}} ({{demandeur._source.Gender}})
+                    </a>
+                    <p>
+                        <cite class="publishedAgency">{{demandeur._source.Gender}}</cite> -
+                        <span class="publishedDate">
+                        Né(e) le : <strong>{{demandeur._source.DateNaissance | date:'MM/dd/yyyy'}}</strong> a : {{demandeur._source.CommNaiss}} , N° Act : <strong>{{demandeur._source.NumeroActeNaissance}}</strong>
+                    </span>
+                    </p>
+                    <p class="summary">Résidant a : <strong>{{demandeur._source.ComResidance}} </strong><span class="highlight">Inscrit a l'agence: </span>                        <span> <strong>{{demandeur._source.AgenceDemandeur}}</strong></span></p>
+                    <p class="summary" ng-if="demandeur._source.DateDebutContrat">Date debut de contrat : <strong>{{demandeur._source.DateDebutContrat}} </strong><span class="highlight">Date Fin: </span> <span> <strong>{{demandeur._source.DateFinContrat}}</strong></span></p>
+                </li>
+
+            </div>
+        </ul>
+    </div>
+
+</div>
