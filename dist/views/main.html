@@ -1,9 +1,9 @@
 <div class="container">
-    <form class="form-horizontal" role="form" ng-submit="vm.simpleSearch()">
-        <div class="row">
+    <div class="row">
+        <form class="form-horizontal" role="form" ng-submit="vm.simpleSearch()" ng-show="vm.isSimpleSearch">
             <div class="col-md-09">
                 <div class="input-group" id="adv-search">
-                    <input type="text" class="form-control" id="query" autofocus autocomplete="off" ng-model="vm.query" placeholder="Chercher un demandeur"
+                    <input type="text" class="form-control" id="query" style="font-size: 35px; height: 50px" autofocus autocomplete="off" ng-model="vm.query" placeholder="Chercher un demandeur"
                     />
                     <div class="input-group-btn">
                         <div class="btn-group" role="group">
@@ -31,15 +31,20 @@
                                     </div>
                                 </div>
                             </div>-->
-                            <button type="submit" id="btnSimpleSearch" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                            <button type="submit" id="btnSimpleSearch" style="margin-left: 3px; font-size: 25px; height: 50px"  class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                         </div>
                     </div>
                 </div>
-           
+
             </div>
+        </form>
+        <div class="loader" style="float: none ; margin: 0 auto" ng-show="!vm.isSimpleSearch">
+            
         </div>
 
-    </form>
+    </div>
+
+
 </div>
 
 <br>
@@ -56,7 +61,7 @@
     <div class="tab-pane result-area active" id="profile">
         <ul class="list-unstyled press">
             <div ng-repeat="demandeur in vm.demandeurs.list">
-                <li class="col-md-12" ng-class=" {'press-release': demandeur._source.DateDebutContrat, 'event': !demandeur._source.DateDebutContrat  }" >
+                <li class="col-md-12" ng-class=" {'press-release': demandeur._source.DateDebutContrat, 'event': !demandeur._source.DateDebutContrat  }">
                     <i class="fa fa-calendar fa-lg"></i>
                     <a target="_blank" href="#">
                     <strong>{{demandeur._source.Nom}} </strong>  {{demandeur._source.Prenom}} ({{demandeur._source.Gender}})   <strong style="color:red; float:right;  text-align: right">(Score : {{demandeur._score}})</strong> 
@@ -67,8 +72,10 @@
                         Né(e) le : <strong>{{demandeur._source.DateNaissance | date:'dd/MM/yyyy'}}</strong> a : {{demandeur._source.CommNaiss}} , N° Act : <strong>{{demandeur._source.NumeroActeNaissance}}</strong>
                     </span>
                     </p>
-                    <p class="summary">Résidant a : <strong>{{demandeur._source.ComResidance}} </strong><span class="highlight">Inscrit a l'agence: </span>                        <span> <strong>{{demandeur._source.AgenceDemandeur}}</strong></span></p>
-                    <p class="summary" ng-if="demandeur._source.DateDebutContrat">Date debut de contrat : <strong>{{demandeur._source.DateDebutContrat  | date:'dd/MM/yyyy'}} </strong><span class="highlight">Date Fin: </span> <span> <strong>{{demandeur._source.DateFinContrat  | date:'dd/MM/yyyy'}}</strong></span></p>
+                    <p class="summary" ng-if="demandeur._source.ComResidance">Résidant a : <strong>{{demandeur._source.ComResidance}} </strong><span class="highlight">Inscrit a l'agence: </span>                        <span> <strong>{{demandeur._source.AgenceDemandeur}}</strong></span></p>
+                    <p class="summary" ng-if="demandeur._source.DateDebutContrat">Date debut de contrat : <strong>{{demandeur._source.DateDebutContrat  | date:'dd/MM/yyyy'}} </strong>
+                        <span
+                            class="highlight">Date Fin: </span> <span> <strong>{{demandeur._source.DateFinContrat  | date:'dd/MM/yyyy'}}</strong></span></p>
                 </li>
 
             </div>
