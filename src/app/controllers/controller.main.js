@@ -14,7 +14,7 @@
         
         $timeout(function(){
             self.isSimpleSearch = true;
-        }, 1)
+        }, 15000)
 
         self.simpleSearch = function () {
             console.log("Searche for : " + self.query);
