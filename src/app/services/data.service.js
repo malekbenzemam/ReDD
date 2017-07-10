@@ -40,8 +40,8 @@
             data = {
                 "query": {
                     "query_string": {
-
-                        "query": term
+                        "query": term,
+                        "fields": ["_all", "Nom^3","Prenom^2"]
                     }
                 }
             };
