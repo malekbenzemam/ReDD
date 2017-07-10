@@ -8,13 +8,13 @@
     function controller(dataservice, config,$timeout) {
         var self = this;
         self.resultStats ="";
-        self.query = "malek";
+        self.query = "Welcome to anem";
         self.isSimpleSearch = false;
 
         
         $timeout(function(){
             self.isSimpleSearch = true;
-        }, 10000)
+        }, 1)
 
         self.simpleSearch = function () {
             console.log("Searche for : " + self.query);
