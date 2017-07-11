@@ -8,7 +8,7 @@
     function controller(dataservice, config,$timeout) {
         var self = this;
         self.resultStats ="";
-        self.query = "Welcome to anem";
+        self.query = "Welcome to ReDD";
         self.isSimpleSearch = false;
 
         
