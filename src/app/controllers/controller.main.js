@@ -8,13 +8,13 @@
     function controller(dataservice, config,$timeout) {
         var self = this;
         self.resultStats ="";
-        self.query = "Welcome to ReDD";
+        self.query = "";
         self.isSimpleSearch = false;
 
         
         $timeout(function(){
             self.isSimpleSearch = true;
-        }, 15000)
+        }, 1000)
 
         self.simpleSearch = function () {
             console.log("Searche for : " + self.query);
