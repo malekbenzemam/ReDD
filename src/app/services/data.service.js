@@ -41,7 +41,8 @@
                 "query": {
                     "query_string": {
                         "query": term,
-                        "fields": ["_all", "Nom^3","Prenom^2"]
+                        "fields": ["_all"],
+                        "default_operator" : "and"
                     }
                 }
             };
