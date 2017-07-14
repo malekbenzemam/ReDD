@@ -38,6 +38,7 @@
                 }
             };
             data = {
+                "from":0,"size":20,
                 "query": {
                     "query_string": {
                         "query": term,
