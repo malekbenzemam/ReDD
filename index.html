@@ -10,12 +10,25 @@
     <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="dist/css/style.min.css">
+    <style>
+        @media all and (min-width: 992px) {
+
+            div.header-image {
+                /*width: 18em;*/
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center center center;
+                height: 130px;
+                background-image: url("/images/head.png")
+            }
+        }        
+    </style>
 </head>
 
 <body ng-app="app">
 
-    <img src="images/head.png" class="img-responsive">
-
+    <!--<img src="images/head.png" class="img-responsive">-->
+    <div class="header-image"></div>
     <div class="container" style="padding-top:25px; padding-bottom:15px;">
 
         <div class="col-md-9 col-sm-12 " ui-view></div>
