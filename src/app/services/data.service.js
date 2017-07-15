@@ -8,9 +8,10 @@
     function dataservice($http, config, $q, storage) {
 
         var options = {
-            from: 0, size: 10, 
+            from: 0, size: 10,
             default_operator: "and",
-            fields : ["_all"]// ["Nom","Prenom"],
+            fields: ["_all"],// ["Nom","Prenom"],
+            DAIP : { "range": { "DateDebutContrat": { "gte": "2000-01-01" } } }
         };
         options = storage.getData() || options;
         return {
@@ -26,19 +27,11 @@
 
         };
 
-
-        function query(term) {
-
+        function query(term, page) {
+            var from = ((page || 1) - 1) * 10;
+            
             data = {
-                "query": {
-                    "multi_match": {
-                        "query": term,
-                        "fields": ["nom", "prenom"]
-                    }
-                }
-            };
-            data = {
-                "from": options.from, "size": options.size,
+                "from": from, "size": options.size,
                 "query": {
                     "bool": {
                         "must": {
@@ -50,15 +43,13 @@
                         },
 
                         "filter": [
-                            { "range": { "DateDebutContrat": { "gte": "2000-01-01" } } }
+                            options.DAIP
                         ]
                     }
 
                 }
             };
-            // console.log(data);
             return JSON.stringify(data);
-
         }
 
         function getOneComplete(response) {
