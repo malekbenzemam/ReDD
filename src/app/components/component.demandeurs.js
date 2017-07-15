@@ -1,12 +1,11 @@
-(function () {
+(function (app) {
     "use strict";
 
     function controller() {
         
     };
-    angular.module("app")
-        .component("component.books", {
-            templateUrl: "views/component.books.html",
+    app.component("component.demandeurs", {
+            templateUrl: "views/component.demandeurs.html",
             controller: controller,
             controllerAs: "vm",
             bindings:
@@ -15,4 +14,4 @@
                 pages: "<"
             }
         });
-} ());
+} (angular.module("app")));

@@ -11,25 +11,30 @@
             from: 0, size: 10,
             default_operator: "and",
             fields: ["_all"],// ["Nom","Prenom"],
-            DAIP : { "range": { "DateDebutContrat": { "gte": "2000-01-01" } } }
+            DAIP: { "range": { "DateDebutContrat": { "gte": "2000-01-01" } } }
         };
         options = storage.getData() || options;
         return {
             getData: getData
         };
 
-        function getData(term) {
-            var dsl = query(term);
+        function getData(term, page) {
+            page = (page || 1);
+
+            var from = (page - 1) * 10;
+
+            var dsl = query(term, from);
             return $http.post(config.DATA, dsl)
                 .then(function (response) {
+                    response.data.hits.current = page;
                     return response.data;
                 })
 
         };
 
-        function query(term, page) {
-            var from = ((page || 1) - 1) * 10;
-            
+        function query(term, from) {
+
+
             data = {
                 "from": from, "size": options.size,
                 "query": {
