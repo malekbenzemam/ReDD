@@ -17,7 +17,7 @@
         this.total = Math.floor(this.total / 10) + 1;
         this.getPage = function (index) {
             console.log(index);
-            this.onBtnClick() ;
+            this.onBtnClick({page:index}) ;
             
         }
 
