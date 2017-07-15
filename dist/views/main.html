@@ -40,7 +40,8 @@
                         Né(e) le : <strong>{{demandeur._source.DateNaissance | date:'dd/MM/yyyy'}}</strong> a : {{demandeur._source.CommNaiss}} , N° Act : <strong>{{demandeur._source.NumeroActeNaissance}}</strong>
                     </span>
                     </p>
-                    <p class="summary" ng-if="demandeur._source.ComResidance">Résidant a : <strong>{{demandeur._source.ComResidance}} </strong><span class="highlight">Inscrit a l'agence: </span>                        <span> <strong>{{demandeur._source.AgenceDemandeur}}</strong></span></p>
+                    <p class="summary" ng-if="demandeur._source.WilResidance">Résidant a la wilaya : <strong>{{demandeur._source.WilResidance}} </p>
+                    <p class="summary" ng-if="demandeur._source.ComResidance">Commune : <strong>{{demandeur._source.ComResidance}} </strong><span class="highlight">Inscrit a l'agence: </span>                        <span> <strong>{{demandeur._source.AgenceDemandeur}}</strong></span></p>
                     <p class="summary" ng-if="demandeur._source.DateDebutContrat">Date debut de contrat : <strong>{{demandeur._source.DateDebutContrat  | date:'dd/MM/yyyy'}} </strong>
                         <span class="highlight">Date Fin: </span> <span> <strong>{{demandeur._source.DateFinContrat  | date:'dd/MM/yyyy'}}</strong></span></p>
                 </li>
