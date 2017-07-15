@@ -11,7 +11,6 @@
         self.query = "";
         self.isSimpleSearch = false;
 
-        
         $timeout(function(){
             self.isSimpleSearch = true;
         }, 1000)

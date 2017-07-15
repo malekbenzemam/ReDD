@@ -10,7 +10,7 @@ const minifyCss = require("gulp-minify-css");
 const paths = {
     js: {
         vendor: ["./src/js/vendor/*.js"],
-        src: ["./src/app/app.js", "./src/app/settings/*.js", "./src/app/services/*.js", "./src/app/directives/*.js"
+        src: ["./src/app/lib/*.js","./src/app/app.js", "./src/app/settings/*.js", "./src/app/services/*.js", "./src/app/directives/*.js"
             , "./src/app/components/*.js", "./src/app/controllers/*.js", "./src/js/*.js"],
         dest: "./dist/js/"
     },
@@ -70,9 +70,9 @@ gulp.task('js', ['vendor-js'], function () {
 
 
 
-
 // Rerun the task when a file changes
 gulp.task('watch', function () {
+    gulp.watch(paths.js.vendor, ['js']);
     gulp.watch(paths.js.src, ['js']);
     gulp.watch(paths.css.src, ['css']);
     gulp.watch(paths.views.src, ['views']);

@@ -37,14 +37,25 @@
                     }
                 }
             };
+            // "DateDebutContrat"
             data = {
-                "from":0,"size":20,
+                "from": 0, "size": 5,
                 "query": {
-                    "query_string": {
-                        "query": term,
-                        "fields": ["_all"],
-                        "default_operator" : "and"
+                    "bool": {
+                        "must": {
+                            "query_string": {
+                                "query": term,
+                                "fields": ["_all"],
+                                "default_operator": "and"
+                            }
+                        },
+
+                        "filter": [
+                            
+                            { "range": { "DateDebutContrat": { "gte": "2000-01-01" } } }
+                        ]
                     }
+
                 }
             };
             // console.log(data);
