@@ -3,14 +3,19 @@
 
     app.factory('dataservice', dataservice);
 
-    dataservice.$inject = ['$http', 'config', '$q'];
+    dataservice.$inject = ['$http', 'config', '$q', 'storage'];
 
-    function dataservice($http, config, $q) {
+    function dataservice($http, config, $q, storage) {
 
+        var options = {
+            from: 0, size: 10, 
+            default_operator: "and",
+            fields : ["_all"]// ["Nom","Prenom"],
+        };
+        options = storage.getData() || options;
         return {
             getData: getData
         };
-
 
         function getData(term) {
             var dsl = query(term);
@@ -23,11 +28,6 @@
 
 
         function query(term) {
-            var data = {
-                "query": {
-                    "term": { "nom": term }
-                }
-            };
 
             data = {
                 "query": {
@@ -37,21 +37,19 @@
                     }
                 }
             };
-            // "DateDebutContrat"
             data = {
-                "from": 0, "size": 5,
+                "from": options.from, "size": options.size,
                 "query": {
                     "bool": {
                         "must": {
                             "query_string": {
                                 "query": term,
-                                "fields": ["_all"],
-                                "default_operator": "and"
+                                "fields": options.fields,
+                                "default_operator": options.default_operator
                             }
                         },
 
                         "filter": [
-                            
                             { "range": { "DateDebutContrat": { "gte": "2000-01-01" } } }
                         ]
                     }

@@ -2,18 +2,18 @@
 (function (app) {
     'use strict';
 
-
     app.factory('storage', storage)
 
     storage.$inject = ['$localStorage', '$q'];
 
     function storage($localStorage, $q) {
+        var storageName = "ReDD";
+        console.log("localstorage")
         return {
             getData: getData,
             saveData: saveData
-        };
-
-        var storageName = "redd";
+        }
+        
         
         function getData() {
             var deferred = $q.defer();

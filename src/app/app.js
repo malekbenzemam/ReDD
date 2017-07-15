@@ -1,7 +1,7 @@
 (function () {
     "use strict";
 
-    angular.module("app", ['ui.router'])
+    angular.module("app", ['ui.router','ngStorage'])
         .constant("config", {
             URL: "http://service.anem.dz:8081",
             DIST:"/dist",
