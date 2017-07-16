@@ -19,7 +19,7 @@
         self.simpleSearch = function () {
             console.log("Searche for : " + self.query);
 
-            dataservice.getData(self.query, 10)
+            dataservice.getData(self.query)
                 .then(success);
         };
         self.getPage = function (page) {
